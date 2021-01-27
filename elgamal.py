@@ -31,5 +31,5 @@ def decrypt(sk,c):
     return m
 
 # The python interpreter actually executes the function body here
-print("Answer: ")
-print(keygen())
+# print("Answer: ")
+# print(keygen())
