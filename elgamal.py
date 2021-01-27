@@ -22,8 +22,11 @@ def encrypt(pk,m):
     return [c1,c2]
 
 # take private key, a, and ciphertext [c1,c2] and return an integer m
+# (𝑎*𝑏 % 𝑚)=((𝑎 % 𝑚)*(𝑏 % 𝑚)) % 𝑚
 def decrypt(sk,c):
-    m = (c,1,p)
+    c_1 = c[1]
+    c_2 = c[2]
+    m = pow(pow(c_1, a, p)/pow(c_2, 1 ,p), 1, p)
     return m
 
 # The python interpreter actually executes the function body here
