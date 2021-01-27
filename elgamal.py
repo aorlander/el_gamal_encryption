@@ -15,11 +15,9 @@ def keygen():
 
 # take public key, h, and integer, m, and return an El Gamal ciphertext
 def encrypt(pk,m):
-    # to encrypt m, generate r in the range 1 <= r <= q
     r = random.SystemRandom().randint(1, q)
     c1 = pow(g,r,p)
-
-    c2 = pow( (pow(h,r,p) * pow(m,1,p)), 1, p )
+    c2 = pow( (pow(pk,r,p) * pow(m,1,p)), 1, p )
     return [c1,c2]
 
 # take private key, a, and ciphertext [c1,c2] and return an integer m
