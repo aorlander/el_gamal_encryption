@@ -26,7 +26,7 @@ def encrypt(pk,m):
 def decrypt(sk,c):
     c_1 = c[1]
     c_2 = c[2]
-    m = pow(pow(c_1, a, p)/pow(c_2, 1 ,p), 1, p)
+    m = pow(pow(c_1, sk, p)/pow(c_2, 1 ,p), 1, p)
     return m
 
 # The python interpreter actually executes the function body here
