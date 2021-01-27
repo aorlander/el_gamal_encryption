@@ -24,8 +24,8 @@ def encrypt(pk,m):
 # take private key, a, and ciphertext [c1,c2] and return an integer m
 # (𝑎*𝑏 % 𝑚)=((𝑎 % 𝑚)*(𝑏 % 𝑚)) % 𝑚
 def decrypt(sk,c):
-    c_1 = c[1]
-    c_2 = c[2]
+    c_1 = c[0]
+    c_2 = c[1]
     m = pow(pow(c_1, sk, p)/pow(c_2, 1 ,p), 1, p)
     return m
 
