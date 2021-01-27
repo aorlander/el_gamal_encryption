@@ -33,7 +33,7 @@ def is_prime(n):
 			return False
 	return True
 
-
+# use to compute modular inverses
 def mod_inverse(a, m) : 
     m0 = m 
     y = 0
