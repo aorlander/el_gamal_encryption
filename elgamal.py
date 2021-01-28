@@ -22,14 +22,15 @@ def encrypt(pk,m):
     return [c1,c2]
 
 # take private key, a, and ciphertext [c1,c2] and return an integer m
+# (𝑎*𝑏 % 𝑚)=((𝑎 % 𝑚)*(𝑏 % 𝑚)) % 𝑚
 def decrypt(sk,c):
-    temp = int(c[1] / pow(c[0], sk, p))
-    m = pow(temp, 1, p)
-    print(m)
+    t2=pow(c[1],1,p)
+    t1=pow(c[0],-sk,p)
+    m = pow(t2*t1,1,p)
     return m
 
 # The python interpreter actually executes the function body here
 # print("Answer: ")
 keys = keygen()
-c = encrypt(keys[0], 5)
+c = encrypt(keys[0], 1010)
 decrypt(keys[1], c)
