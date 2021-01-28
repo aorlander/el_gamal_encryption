@@ -23,10 +23,25 @@ def encrypt(pk,m):
 
 # take private key, a, and ciphertext [c1,c2] and return an integer m
 # (𝑎*𝑏 % 𝑚)=((𝑎 % 𝑚)*(𝑏 % 𝑚)) % 𝑚
+
+# Modular exponentiation can be performed with a negative 
+# exponent e by finding the modular multiplicative 
+# inverse d of b modulo m using the extended Euclidean 
+# algorithm. That is: 
+# c = b^e mod m 
+#   = d^−e mod m, where d ⋅ b ≡ 1 (mod m). => need inverse of (d, m)
+# d = c[0] and e = sk, m = p
+# b^sk mod p
+
+# Given two integers ‘a’ and ‘m’, 
+# The modular multiplicative inverse is an integer ‘x’ 
+# such that. a ⋅ x ≅ 1 (mod m) 
 def decrypt(sk,c):
     t2=pow(c[1],1,p)
-    t1=pow(c[0],-sk,p)
+    x = mod_inverse(c[0],p)
+    t1 = pow(x, sk, p)
     m = pow(t2*t1,1,p)
+    print(m)
     return m
 
 # The python interpreter actually executes the function body here
